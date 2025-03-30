@@ -100,30 +100,36 @@
       position: relative;
       display: inline-block;
       margin-top: 30px;
+      background-color: white;
+      border-radius: 15px;
+      padding-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     .card img {
       max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
     }
 
-    .name-overlay {
-      position: absolute;
-      bottom: 60px;
-      right: 0;
-      left: 0;
-      font-size: 22px;
+    .card-name {
+      margin-top: 20px;
+      font-size: 20px;
       font-weight: bold;
       color: #026c7c;
-      text-shadow: 1px 1px 2px #fff;
     }
 
     .hidden {
       display: none;
     }
+
+    .download-btn {
+      margin-top: 15px;
+    }
   </style>
+
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -143,9 +149,12 @@
     <br>
     <button onclick="showCard()">عرض التهنئة</button>
 
-    <div class="card hidden" id="greetingCard">
-      <img src="photo.jpeg" alt="بطاقة تهنئة العيد">
-      <div class="name-overlay" id="nameOverlay"></div>
+    <div class="card hidden" id="greetingCardWrapper">
+      <div id="greetingCard">
+        <img src="photo.jpeg" alt="بطاقة تهنئة العيد">
+        <div class="card-name" id="nameOverlay"></div>
+      </div>
+      <button class="download-btn" onclick="downloadCard()">تحميل البطاقة</button>
     </div>
   </div>
 
@@ -153,14 +162,26 @@
     function showCard() {
       const name = document.getElementById("nameInput").value.trim();
       const overlay = document.getElementById("nameOverlay");
-      const card = document.getElementById("greetingCard");
+      const cardWrapper = document.getElementById("greetingCardWrapper");
 
       if (name) {
         overlay.textContent = "عيدك مبارك يا " + name + "!";
-        card.classList.remove("hidden");
+        cardWrapper.classList.remove("hidden");
       } else {
         alert("فضلاً أدخل الاسم أولاً");
       }
+    }
+
+    function downloadCard() {
+      const card = document.getElementById("greetingCard");
+      const name = document.getElementById("nameInput").value.trim() || "بطاقة_عيد";
+
+      html2canvas(card).then(canvas => {
+        const link = document.createElement("a");
+        link.download = name + ".png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
     }
   </script>
 </body>
