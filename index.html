@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تهنئة عيد الفطر</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #fdfdfd url('https://www.transparenttextures.com/patterns/gplay.png');
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+   .logo {
+  max-width: 160px;
+  margin-bottom: 25px;
+
+  /* ظل وبروز */
+  box-shadow: 0 6px 20px rgba(0, 123, 138, 0.25);
+  border-radius: 12px;
+}}
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #026c7c;
+    }
+
+    .official-msg {
+      font-size: 18px;
+      color: #2c2c2c;
+      background-color: #ffffff;
+      padding: 25px;
+      border: 2px solid #007b8a;
+      border-radius: 15px;
+      line-height: 2;
+      margin-bottom: 35px;
+      box-shadow: 0 12px 24px rgba(0, 123, 138, 0.2);
+      animation: fadeInUp 1s ease-out;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .official-msg strong {
+      color: #007b8a;
+    }
+
+    input {
+      padding: 16px;
+      font-size: 18px;
+      width: 85%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 6px 20px rgba(0, 123, 138, 0.3);
+    }
+
+    button {
+      background-color: #007b8a;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    button:hover {
+      background-color: #026c7c;
+    }
+
+    .card {
+      position: relative;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .name-overlay {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      left: 0;
+      font-size: 22px;
+      font-weight: bold;
+      color: #026c7c;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="logo.jpeg" alt="شعار المدرسة">
+    
+    <h2>بطاقة تهنئة بعيد الفطر المبارك</h2>
+
+    <div class="official-msg">
+      بمناسبة حلول عيد الفطر المبارك، تتقدّم <strong>ثانوية اليرموك</strong><br>
+      بأسمى آيات التهاني والتبريكات إلى كافة أفراد الشعب السعودي<br>
+      والأمة الإسلامية، سائلين الله عزّ وجل أن يعيده علينا وعليكم<br>
+      بالخير واليمن والبركات.<br><br>
+      <strong>وكل عام وأنتم بخير.</strong>
+    </div>
+
+    <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
+    <br>
+    <button onclick="showCard()">عرض التهنئة</button>
+
+    <div class="card hidden" id="greetingCard">
+      <img src="photo.jpeg" alt="بطاقة تهنئة العيد">
+      <div class="name-overlay" id="nameOverlay"></div>
+    </div>
+  </div>
+
+  <script>
+    function showCard() {
+      const name = document.getElementById("nameInput").value.trim();
+      const overlay = document.getElementById("nameOverlay");
+      const card = document.getElementById("greetingCard");
+
+      if (name) {
+        overlay.textContent = "عيدك مبارك  " + name + "!";
+        card.classList.remove("hidden");
+      } else {
+        alert("فضلاً أدخل الاسم أولاً");
+      }
+    }
+  </script>
+</body>
+</html>
