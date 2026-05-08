@@ -1,223 +1,858 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة تهنئة عيد الفطر المبارك | ثانوية اليرموك</title>
 
-<!-- وسوم Open Graph لمعاينة واتساب -->
+```
 <meta property="og:title" content="بطاقة تهنئة بعيد الفطر المبارك">
-<meta property="og:description" content="صمّم بطاقتك الخاصة بمناسبة عيد الفطر من مدرسة  ثانوية اليرموك">
+<meta property="og:description" content="صمّم بطاقتك الخاصة بمناسبة عيد الفطر من ثانوية اليرموك">
 <meta property="og:image" content="https://alfale7.github.io/Eidd/photo.jpeg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alfale7.github.io/Eidd/">
-  <meta charset="UTF-8">
-  <title>بطاقة تهنئة عيد الفطر</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-  <style>
+<style>
+    :root {
+        /* Eid Dawn palette — unique from all previous designs */
+        --dawn-rose: #e8a0a0;          /* وردي الفجر */
+        --dawn-peach: #f5c5a3;         /* خوخي الفجر */
+        --dawn-sky: #c8d8e8;           /* أزرق السحر */
+        --night-end: #1a2535;          /* نهاية الليل */
+        --emerald: #1d5c4a;            /* أخضر زمرد */
+        --emerald-mid: #2d7a5f;        /* زمرد متوسط */
+        --emerald-light: #4aaa85;      /* زمرد فاتح */
+        --copper: #b5651d;             /* نحاسي */
+        --copper-light: #d4956a;       /* نحاسي فاتح */
+        --ivory: #faf4e8;              /* عاجي */
+        --ivory-warm: #f5ebe0;         /* عاجي دافئ */
+        --text-dark: #1a1a2e;
+        --text-mid: #3d3550;
+        --crescent-gold: #e8c547;      /* ذهبي الهلال */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: #fdfdfd url('https://www.transparenttextures.com/patterns/gplay.png');
-      text-align: center;
-      color: #1a1a1a;
+        font-family: 'Tajawal', sans-serif;
+        background: var(--ivory);
+        color: var(--text-dark);
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
     }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 40px 20px;
+    /* ═══ Soft dawn sky background ═══ */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 100% 40% at 50% 0%,
+                rgba(232,160,160,0.25) 0%,
+                rgba(245,197,163,0.15) 30%,
+                transparent 70%),
+            radial-gradient(ellipse 80% 30% at 0% 50%,
+                rgba(29,92,74,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 100% 80%,
+                rgba(200,216,232,0.2) 0%, transparent 60%),
+            linear-gradient(180deg,
+                #f8f0e4 0%,
+                #faf4e8 40%,
+                #f5ebe0 100%);
+        z-index: 0;
+        pointer-events: none;
     }
 
-    .logo {
-      max-width: 160px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 20px rgba(0, 123, 138, 0.25);
-      border-radius: 12px;
+    /* Stars / sparkles dots */
+    body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            radial-gradient(1.5px 1.5px at 15% 15%, rgba(232,197,71,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 30% 8%, rgba(232,197,71,0.4) 0%, transparent 100%),
+            radial-gradient(1.5px 1.5px at 65% 5%, rgba(232,197,71,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 80% 12%, rgba(232,197,71,0.4) 0%, transparent 100%),
+            radial-gradient(1.5px 1.5px at 92% 6%, rgba(232,197,71,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 5% 25%, rgba(232,197,71,0.3) 0%, transparent 100%),
+            radial-gradient(1.5px 1.5px at 45% 3%, rgba(232,197,71,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 55% 18%, rgba(232,197,71,0.3) 0%, transparent 100%);
+        z-index: 0;
+        pointer-events: none;
+        animation: starsTwinkle 5s ease-in-out infinite;
     }
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-      color: #026c7c;
+    @keyframes starsTwinkle {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
     }
 
-    .official-msg {
-      font-size: 20px;
-      color: #2c2c2c;
-      background-color: #ffffff;
-      padding: 35px;
-      border: 2px solid #007b8a;
-      border-radius: 20px;
-      line-height: 2.2;
-      margin-bottom: 20px;
-      box-shadow: 0 12px 28px rgba(0, 123, 138, 0.25);
-      animation: fadeInUp 1s ease-out;
-      opacity: 0;
-      animation-fill-mode: forwards;
+    .page {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 25px 18px 40px;
+    }
+
+    /* ═══════════════════════════════════
+       MOSQUE SILHOUETTE + CRESCENT HERO
+    ═══════════════════════════════════ */
+    .hero-section {
+        position: relative;
+        text-align: center;
+        padding: 40px 25px 35px;
+        margin-bottom: 30px;
+        background:
+            linear-gradient(180deg,
+                rgba(26,37,53,0.95) 0%,
+                rgba(29,92,74,0.85) 60%,
+                rgba(29,92,74,0.7) 100%);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow:
+            0 20px 50px rgba(26,37,53,0.3),
+            0 0 0 1px rgba(232,197,71,0.2);
+    }
+
+    /* Dawn gradient wash at bottom */
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0; right: 0;
+        height: 120px;
+        background: linear-gradient(0deg,
+            rgba(232,160,160,0.2) 0%,
+            transparent 100%);
+        pointer-events: none;
+    }
+
+    /* Islamic geometric pattern */
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            repeating-linear-gradient(60deg,
+                transparent 0, transparent 20px,
+                rgba(232,197,71,0.04) 20px,
+                rgba(232,197,71,0.04) 21px),
+            repeating-linear-gradient(-60deg,
+                transparent 0, transparent 20px,
+                rgba(232,197,71,0.04) 20px,
+                rgba(232,197,71,0.04) 21px);
+        pointer-events: none;
+    }
+
+    /* Crescent + Star SVG */
+    .crescent-emblem {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 20px;
+        position: relative;
+        z-index: 2;
+        animation: crescentGlow 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(232,197,71,0.5));
+    }
+
+    @keyframes crescentGlow {
+        0%, 100% { filter: drop-shadow(0 0 20px rgba(232,197,71,0.4)); transform: translateY(0); }
+        50% { filter: drop-shadow(0 0 35px rgba(232,197,71,0.7)); transform: translateY(-6px); }
+    }
+
+    /* Mosque silhouette */
+    .mosque-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 0;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 2;
+        height: 80px;
+    }
+
+    .hero-eyebrow {
+        display: inline-block;
+        background: rgba(232,197,71,0.15);
+        border: 1px solid rgba(232,197,71,0.4);
+        color: var(--crescent-gold);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-title {
+        font-family: 'Amiri', serif;
+        font-size: clamp(34px, 7vw, 58px);
+        font-weight: 700;
+        color: var(--ivory);
+        line-height: 1.2;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    }
+
+    .hero-title .golden {
+        color: var(--crescent-gold);
+    }
+
+    .hero-subtitle {
+        font-family: 'Noto Naskh Arabic', serif;
+        font-size: 14px;
+        color: rgba(250,244,232,0.75);
+        line-height: 1.9;
+        max-width: 480px;
+        margin: 0 auto 20px;
+        position: relative;
+        z-index: 2;
+        font-weight: 500;
+    }
+
+    .ornament-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .orn-line {
+        height: 1px;
+        width: 50px;
+        background: linear-gradient(90deg, transparent, rgba(232,197,71,0.6));
+    }
+    .orn-line.rev { background: linear-gradient(90deg, rgba(232,197,71,0.6), transparent); }
+    .orn-dot { width: 5px; height: 5px; background: var(--crescent-gold); transform: rotate(45deg); }
+
+    /* ═══════════════════════════════════
+       OFFICIAL MESSAGE CARD
+    ═══════════════════════════════════ */
+    .official-card {
+        background: var(--ivory-warm);
+        border: 1px solid rgba(181,101,29,0.2);
+        border-radius: 20px;
+        padding: 35px 30px;
+        margin-bottom: 28px;
+        position: relative;
+        box-shadow:
+            0 10px 30px rgba(29,92,74,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    /* Green top bar */
+    .official-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg,
+            transparent,
+            var(--emerald),
+            var(--emerald-light),
+            var(--emerald),
+            transparent);
+        border-radius: 20px 20px 0 0;
+    }
+
+    .official-card-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: var(--emerald);
+        margin-bottom: 16px;
+    }
+
+    .official-card-label::before, .official-card-label::after {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background: var(--emerald-light);
+    }
+
+    .official-text {
+        font-family: 'Amiri', serif;
+        font-size: clamp(16px, 2.5vw, 19px);
+        color: var(--text-dark);
+        line-height: 2.2;
+        text-align: center;
+    }
+
+    .official-text strong {
+        color: var(--emerald);
+        font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════
+       CREDITS ROW
+    ═══════════════════════════════════ */
+    .credits-card {
+        background: var(--emerald);
+        color: var(--ivory);
+        border-radius: 16px;
+        padding: 22px 25px;
+        margin-bottom: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr;
+        align-items: center;
+        gap: 0;
+        box-shadow: 0 10px 25px rgba(29,92,74,0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .credits-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            repeating-linear-gradient(45deg,
+                transparent 0, transparent 12px,
+                rgba(255,255,255,0.03) 12px,
+                rgba(255,255,255,0.03) 13px);
+    }
+
+    .credit-block {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .credit-role {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: rgba(250,244,232,0.6);
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+
+    .credit-name {
+        font-family: 'Noto Naskh Arabic', serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--crescent-gold);
+    }
+
+    .credits-divider {
+        background: rgba(232,197,71,0.3);
+        height: 40px;
+    }
+
+    /* ═══════════════════════════════════
+       FORM SECTION
+    ═══════════════════════════════════ */
+    .form-card {
+        background: var(--ivory-warm);
+        border: 1px solid rgba(29,92,74,0.15);
+        border-radius: 20px;
+        padding: 32px 28px;
+        margin-bottom: 28px;
+        position: relative;
+    }
+
+    .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg,
+            transparent,
+            var(--copper),
+            var(--copper-light),
+            var(--copper),
+            transparent);
+        border-radius: 20px 20px 0 0;
+    }
+
+    .form-eyebrow {
+        text-align: center;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: var(--copper);
+        margin-bottom: 6px;
+    }
+
+    .form-title {
+        font-family: 'Amiri', serif;
+        font-size: 28px;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 22px;
+        font-weight: 700;
+    }
+
+    .name-input {
+        width: 100%;
+        padding: 16px 20px;
+        background: white;
+        border: 1.5px solid rgba(29,92,74,0.2);
+        border-radius: 12px;
+        color: var(--text-dark);
+        font-family: 'Tajawal', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        margin-bottom: 16px;
+        direction: rtl;
+    }
+
+    .name-input::placeholder {
+        color: rgba(26,26,46,0.35);
+        font-weight: 400;
+    }
+
+    .name-input:focus {
+        outline: none;
+        border-color: var(--emerald);
+        box-shadow: 0 0 0 3px rgba(29,92,74,0.1);
+    }
+
+    .show-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, var(--emerald), var(--emerald-mid));
+        color: var(--ivory);
+        font-family: 'Amiri', serif;
+        font-size: 20px;
+        font-weight: 700;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(29,92,74,0.3);
+    }
+
+    .show-btn:hover {
+        background: linear-gradient(135deg, var(--emerald-mid), var(--emerald-light));
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(29,92,74,0.4);
+    }
+
+    /* ═══════════════════════════════════
+       GREETING CARD OUTPUT
+    ═══════════════════════════════════ */
+    #output {
+        display: none;
+        animation: fadeInUp 0.6s ease;
     }
 
     @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .official-msg strong {
-      color: #007b8a;
+    .greeting-wrapper {
+        background: var(--ivory-warm);
+        border: 1px solid rgba(181,101,29,0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        position: relative;
     }
 
-    .signature {
-      margin-top: -5px;
-      padding-top: 10px;
-      font-size: 16px;
-      line-height: 1.8;
+    /* Name display on top of card */
+    .greeting-top {
+        background: linear-gradient(135deg, var(--emerald), var(--emerald-mid));
+        padding: 20px 25px;
+        text-align: center;
+        position: relative;
     }
 
-    .signature p {
-      margin: 5px 0;
+    .greeting-top::after {
+        content: '';
+        position: absolute;
+        bottom: -1px; left: 0; right: 0;
+        height: 20px;
+        background: var(--ivory-warm);
+        clip-path: ellipse(55% 100% at 50% 100%);
     }
 
-    .signature .label {
-      color: #007b8a;
-      font-weight: bold;
+    .greeting-label {
+        font-size: 11px;
+        color: rgba(250,244,232,0.6);
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+        font-weight: 700;
     }
 
-    .signature .name {
-      color: #000;
+    .greeting-name {
+        font-family: 'Amiri', serif;
+        font-size: 30px;
+        color: var(--crescent-gold);
+        font-weight: 700;
+        line-height: 1.3;
     }
 
-    input {
-      padding: 16px;
-      font-size: 18px;
-      width: 85%;
-      max-width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-family: 'Cairo', sans-serif;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
+    /* Card image */
+    #greetingCard {
+        padding: 0 20px 20px;
+        background: var(--ivory-warm);
     }
 
-    input:focus {
-      outline: none;
-      box-shadow: 0 6px 20px rgba(0, 123, 138, 0.3);
+    #greetingCard img {
+        width: 100%;
+        border-radius: 12px;
+        display: block;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
-    button {
-      background-color: #007b8a;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      font-size: 17px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-family: 'Cairo', sans-serif;
+    .card-img-placeholder {
+        width: 100%;
+        aspect-ratio: 4/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: linear-gradient(135deg, rgba(29,92,74,0.08), rgba(232,197,71,0.08));
+        border-radius: 12px;
     }
 
-    button:hover {
-      background-color: #026c7c;
+    .card-img-placeholder-icon { font-size: 50px; }
+    .card-img-placeholder-text {
+        font-size: 12px;
+        color: var(--emerald);
+        letter-spacing: 1px;
+        font-weight: 600;
     }
 
-    .card {
-      position: relative;
-      display: inline-block;
-      margin-top: 30px;
-      background-color: white;
-      border-radius: 15px;
-      padding-bottom: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Greeting message under card */
+    .greeting-message {
+        padding: 20px 25px;
+        text-align: center;
+        background: var(--ivory-warm);
     }
 
-    .card img {
-      max-width: 100%;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
+    .greeting-wish {
+        font-family: 'Amiri', serif;
+        font-size: 18px;
+        color: var(--emerald);
+        line-height: 1.8;
+        font-weight: 700;
     }
 
-    .card-name {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #026c7c;
-    }
-
-    .hidden {
-      display: none;
-    }
-
+    /* Download button */
     .download-btn {
-      margin-top: 15px;
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, var(--copper), var(--copper-light));
+        color: var(--ivory);
+        font-family: 'Tajawal', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 18px rgba(181,101,29,0.3);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
-  </style>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(181,101,29,0.4);
+    }
+
+    /* ═══════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════ */
+    .footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid rgba(29,92,74,0.12);
+        margin-top: 10px;
+    }
+
+    .footer-crescent { font-size: 28px; margin-bottom: 8px; color: var(--crescent-gold); }
+
+    .footer-school {
+        font-family: 'Amiri', serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--emerald);
+        margin-bottom: 3px;
+    }
+
+    .footer-sub {
+        font-size: 11px;
+        color: rgba(26,26,46,0.45);
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    @media (max-width: 560px) {
+        .hero-section { padding: 35px 20px 28px; }
+        .official-card { padding: 28px 20px; }
+        .form-card { padding: 25px 20px; }
+        .official-text { font-size: 15px; }
+    }
+</style>
+```
+
 </head>
 <body>
-  <div class="container">
-    <img class="logo" src="logo.jpeg" alt="شعار الروضة">
 
-    <h2>بطاقة تهنئة بعيد الفطر المبارك</h2>
+<div class="page">
 
-<div class="official-msg">
-  بمناسبة حلول عيد الفطر المبارك، تتقدّم <strong>ثانوية اليرموك بسكاكا</strong><br>
-  بخالص التهاني والتبريكات إلى مقام <strong>خادم الحرمين الشريفين الملك سلمان بن عبدالعزيز آل سعود</strong><br>
-  وسمو <strong>ولي العهد الأمير محمد بن سلمان بن عبدالعزيز</strong> ـ حفظهما الله ـ، وإلى <strong>القيادة الرشيدة</strong>،<br>
-  كما تتقدّم بالتهنئة إلى <strong>كافة أفراد الشعب السعودي الكريم</strong>،<br>
-  سائلين الله عزّ وجل أن يعيده علينا وعليكم بالخير واليُمن والبركات.<br><br>
-  <strong>وكل عام وأنتم بخير.</strong>
+```
+<!-- ═══ HERO ═══ -->
+<div class="hero-section">
+    <!-- Crescent + Star emblem -->
+    <div class="crescent-emblem">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="moonGrad" cx="40%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#fce8a3"/>
+                    <stop offset="60%" stop-color="#e8c547"/>
+                    <stop offset="100%" stop-color="#c9a030"/>
+                </radialGradient>
+            </defs>
+
+            <!-- Crescent moon -->
+            <path d="M60 15
+                A45 45 0 1 0 60 105
+                A35 35 0 1 1 60 15 Z"
+                fill="url(#moonGrad)"
+                stroke="rgba(232,197,71,0.4)" stroke-width="1"/>
+
+            <!-- Inner shadow on crescent -->
+            <path d="M62 18
+                A42 42 0 1 0 62 102
+                A33 33 0 1 1 62 18 Z"
+                fill="rgba(0,0,0,0.08)"/>
+
+            <!-- Star -->
+            <path d="M88 38 L91 46 L100 46 L93 51 L96 59 L88 54 L80 59 L83 51 L76 46 L85 46 Z"
+                fill="url(#moonGrad)" stroke="rgba(232,197,71,0.3)" stroke-width="0.5"/>
+
+            <!-- Soft glow rings -->
+            <circle cx="60" cy="60" r="55" fill="none"
+                stroke="rgba(232,197,71,0.12)" stroke-width="2"/>
+            <circle cx="60" cy="60" r="50" fill="none"
+                stroke="rgba(232,197,71,0.08)" stroke-width="1"/>
+        </svg>
+    </div>
+
+    <!-- Mosque silhouette -->
+    <div class="mosque-row">
+        <svg viewBox="0 0 500 80" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%; max-width:500px;">
+            <defs>
+                <linearGradient id="mosqueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(232,197,71,0.7)"/>
+                    <stop offset="100%" stop-color="rgba(45,122,95,0.4)"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Left minaret -->
+            <rect x="30" y="20" width="14" height="60" fill="url(#mosqueGrad)"/>
+            <path d="M30 20 L37 5 L44 20 Z" fill="url(#mosqueGrad)"/>
+            <rect x="27" y="38" width="20" height="4" fill="rgba(232,197,71,0.5)"/>
+
+            <!-- Right minaret -->
+            <rect x="456" y="20" width="14" height="60" fill="url(#mosqueGrad)"/>
+            <path d="M456 20 L463 5 L470 20 Z" fill="url(#mosqueGrad)"/>
+            <rect x="453" y="38" width="20" height="4" fill="rgba(232,197,71,0.5)"/>
+
+            <!-- Small side minarets -->
+            <rect x="100" y="35" width="10" height="45" fill="url(#mosqueGrad)"/>
+            <path d="M100 35 L105 24 L110 35 Z" fill="url(#mosqueGrad)"/>
+            <rect x="390" y="35" width="10" height="45" fill="url(#mosqueGrad)"/>
+            <path d="M390 35 L395 24 L400 35 Z" fill="url(#mosqueGrad)"/>
+
+            <!-- Main dome -->
+            <path d="M170 80 L170 42 Q170 5 250 5 Q330 5 330 42 L330 80 Z"
+                fill="url(#mosqueGrad)"/>
+            <path d="M250 5 L250 0" stroke="rgba(232,197,71,0.8)" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Side domes -->
+            <path d="M115 80 L115 52 Q115 32 155 32 Q195 32 195 52 L195 80 Z"
+                fill="url(#mosqueGrad)" opacity="0.7"/>
+            <path d="M305 80 L305 52 Q305 32 345 32 Q385 32 385 52 L385 80 Z"
+                fill="url(#mosqueGrad)" opacity="0.7"/>
+
+            <!-- Arcade arches -->
+            <path d="M170 80 Q190 60 210 80" fill="none" stroke="rgba(232,197,71,0.4)" stroke-width="2"/>
+            <path d="M210 80 Q230 60 250 80" fill="none" stroke="rgba(232,197,71,0.4)" stroke-width="2"/>
+            <path d="M250 80 Q270 60 290 80" fill="none" stroke="rgba(232,197,71,0.4)" stroke-width="2"/>
+            <path d="M290 80 Q310 60 330 80" fill="none" stroke="rgba(232,197,71,0.4)" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <div class="hero-eyebrow">✦ &nbsp; عيد الفطر المبارك &nbsp; ✦</div>
+
+    <h1 class="hero-title">
+        <span class="golden">تقبّل الله</span><br>
+        منّا ومنكم
+    </h1>
+
+    <p class="hero-subtitle">
+        كلّ عامٍ وأنتم إلى الله أقرب،<br>
+        وعلى طاعته أثبت، وبنعمته أحظى
+    </p>
+
+    <div class="ornament-row">
+        <div class="orn-line"></div>
+        <div class="orn-dot"></div>
+        <div class="orn-line rev"></div>
+    </div>
 </div>
 
-     <div class="signature">
-      <p><span class="label">برمجة منسوبي  :</span> <span class="name">مدرسة  ثانوية اليرموك</span></p>
-      <p><span class="label">مدير المدرسة :</span> <span class="name">حمد فريح المعيقل</span></p>
+<!-- ═══ OFFICIAL MESSAGE ═══ -->
+<div class="official-card">
+    <div class="official-card-label">رسالة رسمية</div>
+    <p class="official-text">
+        بمناسبة حلول <strong>عيد الفطر المبارك</strong>، تتقدّم <strong>ثانوية اليرموك بسكاكا</strong>
+        بخالص التهاني والتبريكات إلى مقام
+        <strong>خادم الحرمين الشريفين الملك سلمان بن عبدالعزيز آل سعود</strong>
+        وسمو <strong>ولي العهد الأمير محمد بن سلمان</strong> — حفظهما الله —
+        وإلى <strong>القيادة الرشيدة</strong> وكافة <strong>أبناء الشعب السعودي الكريم</strong>،
+        سائلين المولى عزّ وجلّ أن يعيده علينا وعليكم بالخير واليُمن والبركات.<br><br>
+        <strong>وكلّ عام وأنتم بخير.</strong>
+    </p>
+</div>
+
+<!-- ═══ CREDITS ═══ -->
+<div class="credits-card">
+    <div class="credit-block">
+        <div class="credit-role">مدير المدرسة</div>
+        <div class="credit-name">حمد فريح المعيقل</div>
+    </div>
+    <div class="credits-divider"></div>
+    <div class="credit-block">
+        <div class="credit-role">برمجة منسوبي</div>
+        <div class="credit-name">ثانوية اليرموك</div>
+    </div>
+</div>
+
+<!-- ═══ FORM ═══ -->
+<div class="form-card">
+    <div class="form-eyebrow">بطاقتك الخاصة</div>
+    <h2 class="form-title">اكتب اسمك واحصل على تهنئتك</h2>
+
+    <input type="text" class="name-input" id="nameInput" placeholder="✦ اكتب اسمك هنا">
+
+    <button class="show-btn" onclick="showCard()">
+        🌙 &nbsp; عرض بطاقة التهنئة
+    </button>
+</div>
+
+<!-- ═══ OUTPUT ═══ -->
+<div id="output">
+
+    <div class="greeting-wrapper">
+        <div class="greeting-top">
+            <div class="greeting-label">تهنئة خاصة بـ</div>
+            <div class="greeting-name" id="nameDisplay">—</div>
+        </div>
+
+        <div id="greetingCard">
+            <img src="photo.jpeg" alt="بطاقة تهنئة العيد"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="card-img-placeholder" style="display:none;">
+                <div class="card-img-placeholder-icon">🌙</div>
+                <div class="card-img-placeholder-text">صورة بطاقة التهنئة</div>
+            </div>
+        </div>
+
+        <div class="greeting-message">
+            <div class="greeting-wish" id="wishText">—</div>
+        </div>
     </div>
 
-    <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
-    <br>
-    <button onclick="showCard()">عرض التهنئة</button>
+    <button class="download-btn" onclick="downloadCard()">
+        <span>⬇</span>
+        <span>تحميل البطاقة</span>
+    </button>
 
-    <div class="card hidden" id="greetingCardWrapper">
-      <div id="greetingCard">
-        <img src="photo.jpeg" alt="بطاقة تهنئة العيد">
-        <div class="card-name" id="nameOverlay"></div>
-      </div>
-      <button class="download-btn" onclick="downloadCard()">تحميل البطاقة</button>
-    </div>
-  </div>
+</div>
 
-  <script>
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+    <div class="footer-crescent">☽</div>
+    <div class="footer-school">ثانوية اليرموك — سكاكا</div>
+    <div class="footer-sub">عيد الفطر المبارك ١٤٤٦هـ</div>
+</div>
+```
+
+</div>
+
+<script>
+    const eidWishes = [
+        "عيدك مبارك وعساك من عوّاده 🌙",
+        "كلّ عام وأنت بأتمّ الصحة والسعادة ✨",
+        "عيد مبارك وعامٌ مليء بالخير والنعمة 🌸",
+        "تقبّل الله طاعتك وأعاد عليك العيد بالسرور 🤲",
+        "كلّ عام وأنت إلى الله أقرب وبنعمته أجدر ⭐"
+    ];
+
     function showCard() {
-      const name = document.getElementById("nameInput").value.trim();
-      const overlay = document.getElementById("nameOverlay");
-      const cardWrapper = document.getElementById("greetingCardWrapper");
+        const name = document.getElementById("nameInput").value.trim();
+        if (!name) {
+            const input = document.getElementById("nameInput");
+            input.style.borderColor = '#c0392b';
+            input.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.1)';
+            setTimeout(() => {
+                input.style.borderColor = 'rgba(29,92,74,0.2)';
+                input.style.boxShadow = 'none';
+            }, 1500);
+            return;
+        }
 
-      if (name) {
-        overlay.textContent = "عيدك مبارك يا " + name + "!";
-        cardWrapper.classList.remove("hidden");
-      } else {
-        alert("فضلاً أدخل الاسم أولاً");
-      }
+        document.getElementById("nameDisplay").textContent = name;
+        const randomWish = eidWishes[Math.floor(Math.random() * eidWishes.length)];
+        document.getElementById("wishText").textContent =
+            "عيدك مبارك يا " + name + "! " + randomWish.substring(randomWish.indexOf(' ', 10));
+
+        const output = document.getElementById("output");
+        output.style.display = "block";
+        setTimeout(() => output.scrollIntoView({behavior: 'smooth', block: 'start'}), 100);
     }
 
     function downloadCard() {
-      const card = document.getElementById("greetingCard");
-      const name = document.getElementById("nameInput").value.trim() || "بطاقة_عيد";
-
-      html2canvas(card).then(canvas => {
-        const link = document.createElement("a");
-        link.download = name + ".png";
-        link.href = canvas.toDataURL();
-        link.click();
-      });
+        const card = document.getElementById("greetingCard");
+        const name = document.getElementById("nameInput").value.trim() || "بطاقة_عيد";
+        html2canvas(card, { scale: 2, useCORS: true, backgroundColor: '#faf4e8' }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "عيد_مبارك_" + name + ".png";
+            link.href = canvas.toDataURL();
+            link.click();
+        });
     }
-  </script>
+
+    // Enter key
+    document.getElementById("nameInput").addEventListener("keydown", e => {
+        if (e.key === "Enter") showCard();
+    });
+</script>
+
 </body>
 </html>
